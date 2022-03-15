@@ -11,6 +11,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using RestWithASPNETUdemy.Controllers.Services;
+using RestWithASPNETUdemy.Controllers.Services.Implementations;
 
 namespace RestWithASPNETUdemy
 {
@@ -28,6 +30,8 @@ namespace RestWithASPNETUdemy
         {
 
             services.AddControllers();
+            //Dependencies Injection
+            services.AddScoped<IPersonService, PersonServiceImplementation>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "RestWithASPNETUdemy", Version = "v1" });
